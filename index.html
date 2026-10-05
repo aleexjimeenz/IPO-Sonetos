@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lector de Sonetos Clásicos</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <h1 class="header-title">Lector de Sonetos</h1>
+      <p class="header-subtitle">Antología interactiva de la poesía clásica</p>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <nav class="control-panel" aria-label="Selección de soneto">
+      <label for="soneto-select" class="control-label">SELECCIONA UN SONETO:</label>
+      <select id="soneto-select" class="control-select">
+        <!-- Opciones cargadas dinámicamente con MVC -->
+      </select>
+    </nav>
+
+    <article id="soneto-card" class="soneto-card">
+      <header class="soneto-header">
+        <h2 id="soneto-titulo" class="soneto-titulo">Cargando...</h2>
+        <p id="soneto-autor" class="soneto-autor"></p>
+      </header>
+      
+      <!-- Contenedor Flexbox dinámico (sin etiquetas <br>) -->
+      <div id="soneto-body" class="soneto-contenedor">
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Lector de Sonetos &mdash; Interacción Persona-Ordenador (MVC &amp; Flexbox)</p>
+  </footer>
+</body>
+</html>

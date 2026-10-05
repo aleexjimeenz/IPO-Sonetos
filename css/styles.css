@@ -1,0 +1,239 @@
+/* ==========================================================================
+   1. VARIABLES & DESIGN TOKENS (:root)
+   ========================================================================== */
+:root {
+  /* Paleta cromática HSL */
+  --hue-primary: 215; /* Azul sobrio / clásico */
+  --hue-accent: 38;   /* Tono dorado para realce */
+
+  --color-bg: hsl(var(--hue-primary), 20%, 97%);
+  --color-surface: hsl(var(--hue-primary), 25%, 100%);
+  --color-text-main: hsl(var(--hue-primary), 30%, 15%);
+  --color-text-muted: hsl(var(--hue-primary), 15%, 42%);
+  --color-accent: hsl(var(--hue-accent), 75%, 42%);
+  --color-border: hsl(var(--hue-primary), 20%, 88%);
+  --color-header-bg: hsl(var(--hue-primary), 35%, 18%);
+  --color-header-text: hsl(var(--hue-primary), 15%, 98%);
+
+  /* Tipografías */
+  --font-poetry: 'Georgia', 'Garamond', 'Palatino', serif;
+  --font-ui: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Escala tipográfica fluida */
+  --font-size-footer: clamp(0.70rem, 1.1vh, 0.78rem);
+  --font-size-subtitle: clamp(0.75rem, 1.2vh, 0.88rem);
+  --font-size-label: clamp(0.75rem, 1.2vh, 0.88rem);
+  --font-size-select: clamp(0.80rem, 1.3vh, 0.92rem);
+  --font-size-autor: clamp(0.80rem, 1.5vh, 0.95rem);
+  --font-size-verso: clamp(1.05rem, 2.3vh, 1.35rem);
+  --font-size-soneto-title: clamp(1.25rem, 2.6vh, 1.70rem);
+  --font-size-header-title: clamp(1.40rem, 3.2vh, 2.10rem); /* Cabecera destacada */
+
+  /* Espaciado y dimensiones */
+  --content-max-width: 620px;
+  --gap-versos: clamp(0.08rem, 0.35vh, 0.22rem);
+  --gap-estrofas: clamp(0.40rem, 1.4vh, 0.80rem);
+
+  /* Estructura y sombras */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+/* ==========================================================================
+   2. RESET Y BLOQUEO ESTRICTO DE SCROLL (100VH / 100DVH)
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow: hidden; /* Cero scroll en la ventana */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-ui);
+  line-height: 1.3;
+}
+
+/* ==========================================================================
+   3. CABECERA & PIE DE PÁGINA
+   ========================================================================== */
+.header {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  background-color: var(--color-header-bg);
+  color: var(--color-header-text);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.header-title {
+  font-family: var(--font-poetry);
+  font-size: var(--font-size-header-title);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.header-subtitle {
+  font-size: var(--font-size-subtitle);
+  font-style: italic;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.footer {
+  flex-shrink: 0;
+  padding: 0.35rem;
+  text-align: center;
+  font-size: var(--font-size-footer);
+  color: var(--color-text-muted);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ==========================================================================
+   4. CONTENEDOR PRINCIPAL Y SELECTOR
+   ========================================================================== */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem; /* Espaciado equilibrado entre secciones */
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0.8rem 1rem;
+  overflow: hidden;
+}
+
+.control-panel {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: var(--content-max-width);
+  padding: 0.45rem 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.control-label {
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.control-select {
+  padding: 0.25rem 0.6rem;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-select);
+  color: var(--color-text-main);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: center;
+}
+
+/* ==========================================================================
+   5. TARJETA DEL SONETO
+   ========================================================================== */
+.soneto-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: var(--content-max-width);
+  padding: clamp(0.8rem, 2vh, 1.4rem) clamp(1rem, 3vw, 2rem);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.soneto-header {
+  flex-shrink: 0;
+  width: 100%;
+  margin-bottom: clamp(0.4rem, 1.2vh, 0.7rem);
+  padding-bottom: clamp(0.2rem, 0.6vh, 0.4rem);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.soneto-titulo {
+  font-family: var(--font-poetry);
+  font-size: var(--font-size-soneto-title);
+  color: var(--color-text-main);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.soneto-autor {
+  margin-top: 0.15rem;
+  font-size: var(--font-size-autor);
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+/* ==========================================================================
+   6. CONTENEDOR FLEXBOX & CENTRADO (SIN <BR>)
+   ========================================================================== */
+.soneto-contenedor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: var(--gap-estrofas); /* Gestalt: separación nítida entre estrofas */
+}
+
+.estrofa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: var(--gap-versos);   /* Gestalt: versos estrechamente vinculados */
+}
+
+.verso {
+  width: 100%;
+  font-family: var(--font-poetry);
+  font-size: var(--font-size-verso);
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.35;
+  text-align: center;       /* Centrado métrico completo */
+  white-space: nowrap;
+}
